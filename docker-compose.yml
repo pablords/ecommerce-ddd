@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  ecommerce-db:
+    container_name: ecommerce-db
+    image: "postgres:12.12-bullseye"
+    env_file: ./.env
+    restart: always
+    networks:
+      - services
+    ports:
+      - "5432:5432"
+    volumes:
+      - "ecommerce_data:/var/lib/postgresql/data"
+
+networks:
+  services:
+
+volumes:
+  ecommerce_data:
